@@ -144,6 +144,7 @@ for MergeCells in range(NumDat*2+6, NumDat*2+9+1):
 	formula_AddWorkTimHour = '=G%s-G%s' % ((NumDat*2+6), (NumDat*2+8))
 	Sht[MergCells_botm_1].alignment = openpyxl.styles.Alignment(horizontal="right", vertical="center")
 	Sht[MergCells_botm_1].font      = openpyxl.styles.Font(name='宋体', size=11, color='FF0000', bold=True)	# red color
+	Sht[MergCells_botm_3].alignment = openpyxl.styles.Alignment(horizontal="right", vertical="center")
 	Sht[MergCells_botm_4].font      = openpyxl.styles.Font(name='宋体', size=11, bold=True)	
 	Sht.merge_cells(MergCells_botm_1 + ':' + MergCells_botm_2)
 	
@@ -170,6 +171,16 @@ for MergeCells in range(NumDat*2+6, NumDat*2+9+1):
 		Sht[MergCells_botm_3].fill = ColorFill_Gray
 		Sht[MergCells_botm_3] = formula_AddWorkTimHour
 		Sht[MergCells_botm_3].number_format = '0.000'
+
+signature = 'G%s' % (NumDat*2+11)
+signaturedate = 'G%s' % (NumDat*2+12)
+Sht[signature] = '主管签字：'
+Sht[signaturedate] = '签字日期：'
+Sht[signature].font = openpyxl.styles.Font(name='宋体', size=11, bold=True)
+Sht[signature].alignment = openpyxl.styles.Alignment(horizontal="right", vertical="center")
+Sht[signaturedate].alignment = openpyxl.styles.Alignment(horizontal="right", vertical="center")
+Sht[signaturedate].font = openpyxl.styles.Font(name='宋体', size=11, bold=True)
+
 # Note
 Note_Merge_Beg = 'D%s' % (NumDat*2+14)
 Note_Merge_End = 'D%s' % (NumDat*2+16)
